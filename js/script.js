@@ -8,31 +8,38 @@ createApp({
             tasks: [
                 {
                     text: 'Seguire la lezione di Boolean',
-                    done: true
+                    done: false,
+                    edit_enabled: false
                 },
                 {
                     text: 'Fare l\'esercizio quotidiano',
-                    done: true
+                    done: false,
+                    edit_enabled: false
                 },
                 {
                     text: 'Lavare la macchina',
-                    done: false
+                    done: false,
+                    edit_enabled: false
                 },
                 {
                     text: 'Fare la spesa',
-                    done: false
+                    done: false,
+                    edit_enabled: false
                 },
                 {
                     text: 'Giocare con il cane',
-                    done: true
+                    done: false,
+                    edit_enabled: false
                 },
                 {
                     text: 'Falciare l\'erba del prato',
-                    done: false
+                    done: false,
+                    edit_enabled: false
                 },
                 {
                     text: 'Fare la carbonara',
-                    done: false
+                    done: false,
+                    edit_enabled: false
                 }
             ]
         }
@@ -53,6 +60,9 @@ createApp({
             this.tasks.push(obj);
             this.new_task = '';
             
+        },
+        editTask(index){
+            this.tasks[index].edit_enabled = !this.tasks[index].edit_enabled;
         }
     }
 }).mount('#app');

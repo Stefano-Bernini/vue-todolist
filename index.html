@@ -30,11 +30,17 @@
                                 <li v-for="(task, index) in tasks">
                                     <div class="d-flex justify-content-between">
                                         <div :class="task.done ? 'task-done' : ''">
-                                            {{task.text}}
+                                            <div v-if="task.edit_enabled">
+                                                <input type="text" class="input-task" name="edit_task" id="edit_task" v-model="task.text" @keyup.enter="editTask(index)">
+                                            </div>
+                                            <div v-else>{{task.text}}</div>
                                         </div>
                                         <div>
                                             <button class="me-1 btn btn-sm" :class="task.done ? 'btn-dark' : 'btn-primary'" @click="changeTaskStatus(index)">
                                                 <i class="fas" :class="task.done ? 'fa-x' : 'fa-check'"></i>
+                                            </button>
+                                            <button class="me-1 btn btn-sm btn-warning" @click="editTask(index)">
+                                                <i class="fas fa-edit"></i>
                                             </button>
                                             <button class="btn btn-sm btn-danger" @click="deleteTask(index)">
                                                 <i class="fas fa-trash"></i>
